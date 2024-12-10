@@ -62,8 +62,7 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('customer_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('customer.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('order_number')
                     ->searchable(),
