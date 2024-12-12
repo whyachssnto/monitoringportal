@@ -2,13 +2,16 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\IwoOrderExporter;
 use App\Filament\Resources\IwoOrderResource\Pages;
 use App\Filament\Resources\IwoOrderResource\RelationManagers;
 use App\Models\IwoOrder;
+use Filament\Actions\ExportAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ExportAction as ActionsExportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -66,6 +69,10 @@ class IwoOrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            ])
+            ->headerActions([
+                ActionsExportAction::make()
+                ->exporter(IwoOrderExporter::class)
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
